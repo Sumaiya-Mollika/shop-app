@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/provider/auth.dart';
 import 'package:shop_app/screen/order_screen.dart';
 import 'package:shop_app/screen/user_product_screen.dart';
 
@@ -16,32 +18,41 @@ class AppDrawer extends StatelessWidget {
         Divider(),
         ListTile(
             title: Text('SHOP'),
-            leading: IconButton(
-              icon: Icon(Icons.shop),
-              onPressed: () {
+            leading: Icon(Icons.shop),
+              onTap: () {
                 Navigator.of(context).pushReplacementNamed('/');
               },
-            )),
+            ),
         Divider(),
         ListTile(
             title: Text('Orders'),
-            leading: IconButton(
-              icon: Icon(Icons.payment),
-              onPressed: () {
+            leading: Icon(Icons.payment),
+             onTap: () {
                 Navigator.of(context)
                     .pushReplacementNamed(OrderScreen.routeName);
               },
-            )),
+            ),
         Divider(),
         ListTile(
             title: Text('Manage Priduct'),
-            leading: IconButton(
-              icon: Icon(Icons.edit),
-              onPressed: () {
+            leading: Icon(Icons.edit),
+            onTap: () {
                 Navigator.of(context)
                     .pushReplacementNamed(UserProductScreen.routeName);
               },
-            )),
+            ),
+        Divider(),
+        ListTile(
+          title: Text('Logout'),
+          leading: Icon(Icons.logout),
+          onTap: () {
+            Navigator.of(context)
+                .pop();
+           Navigator.of(context).pushReplacementNamed('/');
+
+            Provider.of<Auth>(context, listen: false).logout();
+          },
+        ),
       ]),
     );
   }

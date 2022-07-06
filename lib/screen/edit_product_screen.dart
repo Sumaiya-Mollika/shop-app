@@ -90,7 +90,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     });
     if (_editProduct.id != null) {
       Provider.of<Products>(context, listen: false)
-          .updatesProduct(_editProduct.id!, _editProduct);
+          .updateProduct(_editProduct.id!, _editProduct);
       setState(() {
         _isLodding = false;
       });
